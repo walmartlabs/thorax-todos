@@ -5249,7 +5249,7 @@ Todo = (function() {
 var module = {exports: {}};
 var exports = module.exports;
 var lumbarLoader = exports.loader = {
-  loadPrefix: '',
+  loadPrefix: lumbarLoadPrefix || '',
 
   loadModule: function(moduleName, callback) {
     var loadCount = 0,
@@ -5315,10 +5315,11 @@ function checkLoadResource(object, attr) {
 exports.moduleMap = function(map, loadPrefix) {
   lumbarLoader.map = map;
   lumbarLoader.modules = map.modules;
-  lumbarLoader.loadPrefix = loadPrefix || '';
-};;;
+  lumbarLoader.loadPrefix = loadPrefix || lumbarLoader.loadPrefix;
+};
+;;
 /* lumbar module map */
-module.exports.moduleMap({"modules":{"todo":{"js":"todo.js"}},"routes":{"":"todo","todo":"todo"},"base":{"js":"base.js"}}, '../web/');
+module.exports.moduleMap({"modules":{"todo":{"js":"todo.js","css":{"href":"todo.css"}}},"routes":{"":"todo","todo":"todo"},"base":{"js":"base.js"}});
 lumbarLoader.loadJS = function(moduleName, callback) {
   var loaded = loadResources(moduleName, 'js', 'src', function(href) {
     $script(href, callback);
