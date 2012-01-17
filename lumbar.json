@@ -23,20 +23,22 @@
     ],
     "todo": {
       "static": [
-        "index.html",
-        "style.css",
+        {"src": "index.html", "root": true},
         "destroy.png"
       ],
       "routes": {
         "": "list",
         "todo": "list"
       },
-      "files": [
+      "scripts": [
         "js/models/todo-item.js",
         "js/collections/todo-list.js",
         "js/views/todo-item.js",
         "js/views/todo-list.js",
         "js/controllers/todo.js"
+      ],
+      "styles": [
+        "style.css"
       ]
     }
   },
@@ -46,6 +48,5 @@
       "templates/todo-status.handlebars"
     ],
     "js/views/todo-item.js": ["templates/todo-item.handlebars"]
-  },
-  "loadPrefix": "../"
+  }
 }
